@@ -1,0 +1,818 @@
+#
+#
+#RewriteEngine on
+#RewriteRule ^([a-z0-9_-]+)\.html$ index.php/page/$1 [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond $1 !^(index\.php|asset|robots\.txt)
+#RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+
+
+//var_dump(is_dir('./media/'));
+//var_dump($data_upload_files);
+// var_dump($_FILES['userfile']['name']);
+//var_dump($_FILES);
+//var_dump(is_dir('/upload/')); // directory napaile boolean false dibe
+//exit();
+//Online CSS Unminifier
+->ter
+->cd/var/www/folder-name
+->Ls
+->sudo chmod 777 -R u 				((uploads)folder first character then tab)
+->sudo chmod 7777 -R uploads/     	(fonlder-name)
+->sudo service apache2 restart 
+
+
+
+model function ar firlst positon a
+<?php $this->output->enable_profiler(TRUE);?>_
+or
+echo $this->db->last_query();
+$this->form_validation->set_error_delimiters('<p style="color:red; font-size:12px; clear:both;">', '</p>');
+
+ $query = $this->db->get();
+//echo "<pre>";print_r($query->result());echo "</pre>";
+
+$this->session->set_flashdata('message', 'Not found your book review');
+echo $this->session->flashdata('message');
+________________________________________________________________
+for php bug show 
+echo ini_set('display_errors', 1);
+echo ini_set('display_startup_errors', 1);
+echo error_reporting(-1);
+echo error_reporting();
+
+print_r(error_get_last());
+print_r(set_error_handler($r));
+________________________________________________________________
+remove number wise character
+$string='abcde';
+echo substr_replace($string, "", -2);
+output abc
+________________________________________________________________
+cemicolon
+echo 'Doesn\'t match your records.';
+________________________________________________________________
+convert date formate
+$originalDate = "2010-03-21";
+echo $newDate = date("d-m-Y", strtotime($originalDate));
+output 21-03-2010
+________________________________________________________________
+radio button set value
+ echo form_radio(array('name' => 'inventory_name', 'value'=>'1', 'checked'=>!empty($r) ? true:false, 'id' => 'inventory_name')).nbs(1).'Yes'; 
+________________________________________________________________
+ At 
+
+        $this->db->where('id', $post['identifier']);
+        $this->db->set('votes', 'votes+1', FALSE);
+        $this->db->update('users'); 
+_________________________________________________________________
+For image extension remove code 
+$images=bulbul.jpeg
+$im2=end(explode(".", $images)); // this code at first echo . ar pore je extension name
+echo str_replace('.'.$im2,"",$images); // this code for remove .extension
+ 
+ output bulbul
+_________________________________________________________________
+past view page
+date_default_timezone_set("Asia/Dhaka");
+_________________________________________________________________
+form_dropdown activated code
+ echo form_dropdown('product_id', $options, set_value('product_id', (isset($row->product_id) ? $row->product_id : $_POST['product_id'])), ' id="product_id" class="form-control"'); ?>
+<?php echo form_error('product_id'); ?>	
+_________________________________________________________________
+for previous month you can use
+<?php echo date("y:F:d",strtotime("-1 Months"));  ?>
+<?php echo date("y:F:d",strtotime("-1 year"));  ?>
+<?php echo date("y:F:d",strtotime("-1 day"));  ?>
+or 
+change only y:m:d formate otherwise ok
+echo date("y:M:d", mktime(0, 0, 0, date('m') - 1, date('d'), date('Y')));
+_________________________________________________________________
+date convert
+	  $from_date=2014-02-12;
+      $start = strtotime($from_date) * 1000;
+      $output=124532453435;
+      
+      $timestamp = $output / 1000;
+      date('Y-m-d ', $timestamp);
+      output 2014-02-12;
+
+add 30 days from todays      
+echo date('Y-m-d', strtotime("+30 days"));  
+_________________________________________________________________
+//rename for column name
+ALTER TABLE `books` CHANGE `category_id` `category_id` int(11) unsigned DEFAULT NULL,
+_________________________________________________________________
+//NOT IN condition use for not show data from another table when we can join another table not NOT IN condition table.
+$this->db->where('B.id NOT IN (select book_id from books_book_bundle)',NULL,FALSE);
+//for total rows count only number return
+return $this->db->where("(books.active=1 and books.id NOT IN (select book_id from books_book_bundle))")->count_all_results('books');
+_________________________________________________________________
+/*The UNION operator is used to combine the result-set of two or more SELECT statements.
+Notice that each SELECT statement within the UNION must have the same number of columns. 
+The columns must also have similar data types. Also, the columns in each SELECT statement 
+must be in the same order.
+*/
+//first
+public function get_autocomplete($search_data) {
+		$query=$this->db->query("
+		select B.title as title from books as B where B.title like '$search_data%' group by B.title
+		union all
+		select BB.name as name from book_bundle as BB where BB.name like '$search_data%' group by BB.name limit 10
+		")->result_array();
+	return $query;
+}
+
+//second
+SELECT City, Country FROM Customers
+WHERE Country='Germany'
+UNION ALL
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City; 
+_________________________________________________________________
+//for integer value identifier
+is_numeric($b_name)
+_________________________________________________________________
+jquery minifier online
+css minifier online
+_________________________________________________________________
+$book_name = trim($this->input->post('book_name'));
+$writer_names = trim($this->input->post('writers'));
+$publisher_names = trim($this->input->post('publishers'));
+$status = trim($this->input->post('status'));
+
+if (isset($_POST['search'])) {
+//for distroy session value
+	$this->session->unset_userdata('book_names');
+	$this->session->unset_userdata('wr_name');
+	$this->session->unset_userdata('p_name');
+	$this->session->unset_userdata('s_tatus');
+	//for set session value
+	if ($book_name != '' || $writer_names != '' || $publisher_names != '' || $status != '') {
+		$this->session->set_userdata('book_names', $book_name);
+		$this->session->set_userdata('wr_name', $writer_names);
+		$this->session->set_userdata('p_name', $publisher_names);
+		$this->session->set_userdata('s_tatus', $status);
+	}
+}
+//for use session value
+$b_name = $data['b_name'] = $this->session->userdata('book_names');
+$writer = $data['writer'] = $this->session->userdata('wr_name');
+$publisher = $data['publisher'] = $this->session->userdata('p_name');
+$for_status = $data['for_status'] = $this->session->userdata('s_tatus');
+________________________________________________________________
+//CI multiple where condition
+$this->db->where("(books.title='$b_name'
+		   OR books.price = '$b_name'
+		   OR books.ISBN='$b_name'
+		   OR books.bd_price='$b_name'
+		   OR books.poka_id='$b_name'
+		   )", NULL, FALSE);
+________________________________________________________________
+//copy text field value to another text field
+
+<input id="ajax_category" type="hidden" name="category" value="<?php set_value('category');?>" />
+ <select class="fix_width" name ="category_id">
+ <option data-title='1' value='1'>1</option>
+ <option data-title='2' value='2'>2</option>
+ </select>
+<script type="text/javascript">
+    $(function() {
+        // set category name in hidden field
+        $("select[name='category_id']").change(function(){
+            var category_title = $(this).find('option:selected').attr('data-title');
+           $('#ajax_category').val(category_title);
+        });
+    });
+});
+________________________________________________________________
+
+Show text another div or class box
+if(mon == "" && yer == "")
+{        
+        if (mon == "") {
+                var data = "Select Month.";
+                $('#message_month').show().empty().html(data).slideDown(5000);                               
+            }else{ 
+                $('#message_month').hide();
+            }            
+            if (yer == "") {
+                var data = "Select Year.";
+                $('#message_year').show().empty().html(data).slideDown(5000);                 
+            }else{ 
+                $('#message_year').hide(); 
+            }            
+return false
+}    
+________________________________________________________________
+onclick hide and show
+<script type="text/javascript">
+
+                            $(document).ready(function () {
+
+                                $('input[type="radio"]').click(function () {
+                                    //alert($(this).attr("value"));        
+                                    if ($(this).attr("value") == "1") {
+                                        $(".category").show();
+                                        $(".brand").hide();
+                                    }
+
+                                    if ($(this).attr("value") == "2") {
+                                        $(".category").hide();
+                                        $(".brand").show();
+
+                                    }
+
+
+                                });
+
+                            });
+
+                        </script>    
+________________________________________________________________
+split() every character semicolon print
+
+$(document).ready(function() {
+
+$("#title").keyup(function() {
+var test = $(this).val();
+var res = test.split("");
+ $("#split1").val(res); 
+ }); 
+ 
+ //for espace
+     $("#title").keyup(function() {        
+        var Title = $(this).val();
+        Text = Title.toLowerCase();
+        Text = Text.replace(/[^a-zA-Z0-9]+/g, '-');
+        //$("#seo_url").val(Text);
+        $("#seo_title, #seo_meta_keyword, #seo_meta_description").val(Title);
+    }); 
+ 
+ }); 
+ 
+ <input type="text" placeholder=" Enter Book Name " autocomplete="off" id="title" value="as" name="title">
+________________________________________________________________
+Convert string to array
+$str = "Hello Friend";
+
+$arr1 = str_split($str);
+$arr2 = str_split($str, 3);
+
+print_r($arr1);
+print_r($arr2);
+________________________________________________________________
+/************ dropdown selected ***********/
+<select name="country" class="text_form_class">
+	<option value="">Select Country Name</option>
+	<?php
+	$co = array("Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, The Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe");
+	foreach ($co as $cont) {
+		?>
+	<option value="<?php echo $cont; ?>"<?php if($country==$cont){ echo 'selected=selected';}?> ><?php echo nbs(3).$cont; ?></option>
+	<?php } ?>                                       
+</select> 
+
+<?php if ($_POST['year'] != '') { ?>
+	<option value="<?php echo $_POST['year']; ?>" selected="selected"><?php echo $_POST['year']; ?></option>
+<?php } ?>
+<option value="">  select year </option>   
+
+//for add form
+$t=$_POST['name'];
+<option <?php if($t==$id){ echo 'selected=selected';}?> value='<?php echo $id;?>'><?php echo $title;?></option>
+
+___________________________________________________________
+delete images from folder if insert image with base url the do this code
+(only work folder directory name)
+eg:http://192.168.1.145/quizimg/uploads/option_images/img.jpeg
+$rr=str_replace(base_url(), '', $v);
+unlink($rr);
+___________________________________________________________
+css minifier/unminifier for code nice view
+___________________________________________________________
+$a='bulbul"bul';
+str_replace('"', '', $a);
+___________________________________________________________
+$p_CSVLines=' bangladeshi'
+echo preg_replace('@[matching charater]@', 'ki bsate chan', $p_CSVLines);
+___________________________________________________________
+$line=ï»¿
+$elements = preg_split('/[ï»¿]/', $line);
+___________________________________________________________
+
+echo "<input type='number' min='0' max='100' name='bobot_tubes".$i."' value='0' required='true' class='input-mini'/>"]
+___________________________________________________________
+
+		image uplpading code
+		
+        $this->load->library('upload');
+            $config['upload_path'] ='./uploads/';
+            //$config['upload_path'] =base_url().'uploads/';
+            $config['allowed_types'] = '*';
+            $config['remove_spaces'] = TRUE;                        
+            $config['file_name'] = preg_replace('/\s+/', '_', $_FILES['front_image']['name']);   
+            
+            //$config['max_size'] = '10000';
+            //$config['max_width']  = '1024';
+            //$config['max_height']  = '768';
+            $files= array();
+            $this->upload->initialize($config);
+            
+            $ups=$this->upload->do_upload('front_image');
+            $images_file = $this->upload->data();
+            print_r($images_file);
+            exit();
+            if(!$ups){
+              $this->upload->display_errors();   
+            }
+            
+	if ($this->form_validation->run() == TRUE) {                    
+			if (empty($images_file['file_name'])) {
+				$data['front_image'] = $this->input->post('hiddenfieldfront_image');
+			} else {                    
+				$data['front_image'] = $images_file['file_name'];
+			}
+	}
+            
+            
+            
+           
+Images upload with resize code
+ if (!empty($_FILES['userfile']['name'])) {
+                $config['upload_path'] = './uploads/category/';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size'] = '3072';
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                $this->upload->do_upload('userfile');
+                $data_upload_files = $this->upload->data();
+                 $config['file_name'] = preg_replace('/\s+/', '_', $_FILES['file2']['name']); 
+               
+                //resizing code
+               $this->load->library('image_lib');
+               $config2['source_image'] = $data_upload_files['full_path'];
+               $config2['new_image'] = 'uploads/category/thumbs/' . $_FILES['userfile']['name'];
+               $config2['create_thumb'] = FALSE;
+               $config2['maintain_ratio'] = TRUE;
+               $config2['width'] = 80;
+               $config2['height'] = 80;
+               $this->image_lib->initialize($config2);
+               if(!$this->image_lib->resize()){
+                   echo $this->image_lib->display_errors();
+               }
+               $this->image_lib->clear(); 
+
+            }            
+___________________________________________________________           
+header("Content-Type: text/html; charset=UTF-8");           
+___________________________________________________________
+<option value="<?php echo $w->name; ?>" <?php if ($writer ==$w->name) { ?> selected="selected" <?php } ?> ><?php echo $w->name; ?></option>
+___________________________________________________________
+    <input id="ajax_category" type="hidden" name="category" value="" />
+    <select class="fix_width" name ="category_id">
+    <option data-title='$title' value='$id'>$title</option>
+    </select>
+    
+    $(function() {
+        // set category name in hidden field
+        $("select[name='category']").change(function(){
+            var category_title = $(this).find('option:selected').attr('data-title');
+           $('#ajax_category').val(category_title);
+        });
+    });
+    
+___________________________________________________________
+Multiple language split 
+$pattern = '/[;,]/';   
+$string = "আ,মা,দে,র, b,u,l,b,u,l";
+echo '<pre>', print_r( preg_split( $pattern, $string ), 1 ), '</pre>';
+echo json_encode( preg_split( $pattern, $string ), 1 ), '</pre>';    
+output 
+আ
+মা
+দে
+র
+b
+u
+l
+b
+u
+l
+___________________________________________________________
+
+Jquery all functionality
+http://www.jqueryrain.com/jquery-snippets/
+___________________________________________________________
+$("body").on("submit", "form.submit-btn-form", function(e) {}
+var postData = $(this).serialize();
+
+$('form.submit-btn-form').each(function() {
+	$(this).validate({
+		//$(".submit-btn-form").validate({
+		// Specify the validation rules
+		rules: {
+			book_rating: "required",
+			review: {
+				required: true,
+				minlength: 3
+			}
+
+		},
+		// Specify the validation error messages
+		messages: {
+			review: {
+				required: "Please enter your message",
+				minlength: "Your message must be at least 3 characters long"
+			}
+		},
+		submitHandler: function() {
+			submit.form();
+		}
+	});
+
+});
+___________________________________________________________
+special characters validation
+function alpha_dash_space($str)
+{    
+    $r=preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/', $str);    
+    if($r==true)            
+    {
+      $this->form_validation->set_message('alpha_dash_space', 'The book name field must contain only character.');
+      return false;    
+    }else{
+        return true;
+    }           
+}
+
+preg_match blank/ white space patern
+
+$r = preg_match("/\\s/", $im);            
+            if ($r==true) {}
+            
+remove blank space and replace underline
+preg_replace('/\s+/', '_', $id);            
+___________________________________________________________
+
+
+<select name="country" id="country">
+	<option value="">Select Country Name</option>
+	<?php
+	$co = array("Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, The Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe");
+	if($_POST['country']=='')    
+	{?>
+	<option <?php if($country==$country){?> selected="selected" <?php } ?> value="<?php echo $country; ?>"><?php echo nbs(3).$country; ?></option>
+	<?php }else{
+	foreach ($co as $cont) {
+		if($_POST['country']=='')  
+		?>
+	<option value="<?php echo $cont; ?>" <?php echo set_select('country', $cont, ($cont == set_value('country', $cont))); ?>><?php echo nbs(3).$cont; ?></option>
+	<?php }} ?>                                       
+</select> 
+___________________________________________________________
+//for multiple column text show  one column(concat())
+SELECT B.id as id, CONCAT(B.title, ' - ', W.name) as title FROM books as B inner join writers as W on B.writer_id=W.id  where B.active='1' and B.is_free=0 order by B.title ASC
+SELECT B.id as id, CONCAT("'",B.title, ' - ', W.name,"'") as title FROM books as B inner join writers as W on B.writer_id=W.id  where B.active='1' and B.is_free=0 order by B.title ASC
+___________________________________________________________
+Join query
+SELECT R.email_address as email,
+                R.first_name as user_name,
+                R.date_of_birth as user_phone             
+                FROM registration as R 
+                join driver_info as D 
+                on R.email_address=D.driver_ref_id 
+                where R.email_address='TDRC3'
+___________________________________________________________                                
+instant insert data id return
+$result = mysql_query(.....);
+echo mysql_insert_id();                
+
+update validation 
+$result = mysql_query("update booking set booking_status='".$booking_status."' where d_ref_id='".$d_ref_id."' and id='".$id."' ");
+$up= mysql_affected_rows();
+if($up>0 )
+{  
+    echo json_encode(array('success'));
+}else{    
+    echo json_encode(array('failure'));
+}
+___________________________________________________________                                
+//for line breack 
+echo wordwrap($r['title'],100, "<br>",1)
+___________________________________________________________                    
+// for image sliding site
+http://designscrazed.net/free-responsive-jquery-image-sliders/
+___________________________________________________________   
+return insert id just a time insert data's id
+first condition
+$this->db->insert('add_quiz', $data);
+return $id = $this->db->insert_id();                 
+
+second condition
+$insert_id = $this->get_new_id('gift_sends', 'id');
+$this->db->insert('gift_sends',$data);
+return $insert_id;
+
+___________________________________________________________   
+Get encode value into decode
+$val = '{"password":"eeshaba","email":"TDRC4"}';
+$json = json_decode($val, true);
+$pas = $json['password'];
+$email = $json['email'];
+___________________________________________________________
+//scrolling code
+jquery(document).ready(function() {
+jquery.scrollUp({
+scrollName:'scrollUp',
+scrollDistance: 300,
+scrollFrom:'top',
+scrollSpeed:300,
+easingType:'linear',
+animation:'fade',
+animationInSpeed: 200,
+scrollText:'Scroll to top',
+scrollTitle:false,
+scrollImg:false,
+zIndex:2147483647
+});
+});
+
+
+
+//detro example
+$(function(){
+$('.destroy').click(function(){
+$.scrollUp>destroy();
+})
+});
+</script>
+
+________________________________________________________
+string match then show before all character
+$str='bangladesh';
+echo strtok($str,'g');
+output show =ban;
+________________________________________________________
+start and end date  validation 
+            $this->form_validation->set_rules('time_from', 'starting date', 'callback__datechecker_startdate['.$this->input->post('category_id').']');
+            $this->form_validation->set_rules('time_to', 'ending date', 'callback__datechecker_enddate');
+
+
+function _datechecker_startdate($date) {
+        $start_date = $this->input->post('time_from');
+        $end_date = $this->input->post('time_to');
+        if (empty($start_date)) {
+            $this->form_validation->set_message('_datechecker_startdate', 'The start date field is required.');
+            return FALSE;
+        }
+        else if ($start_date > $end_date) {
+            $this->form_validation->set_message('_datechecker_startdate', 'Start date should be greater than end date.');
+            return FALSE;
+        }else{
+            return true;
+        }
+    }
+
+    function _datechecker_enddate($date) {
+        $start_date = $this->input->post('time_from');
+        $end_date = $this->input->post('time_to');
+        if (empty($end_date)) {
+            $this->form_validation->set_message('_datechecker_enddate', 'The end date field is required.');
+            return FALSE;
+        } else if ($start_date > $end_date) {
+            $this->form_validation->set_message('_datechecker_enddate', 'End date should not be less than start date.');
+            return FALSE;
+        }else{
+            return true;
+        }
+        
+    }
+________________________________________________________
+//set product counter
+//start controller
+$value = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+$t=setcookie('name',$value, time()+3600*3); // send a cookie that expires in 3 hours
+
+//unset($_COOKIE['name']);
+
+if(isset($_COOKIE['name']))
+{ $val=$_COOKIE['name'];}
+
+else {$val=null;}
+if($val !=$value)
+{
+  $rr=$this->Book_stores->counter($id);
+}
+// end controller
+//start model
+function counter($id) {                
+         $this->db->select("*");         
+         $this->db->where("book_id",$id);
+        $query=$this->db->get('counter');
+        $q=$query->num_rows();        
+        if($q!=0)
+        {
+         $this->db->query("UPDATE `counter` SET `book_id`=$id, `counting_number`=counting_number+1  WHERE book_id='$id'");
+         return $this->db->affected_rows(); 
+        }else{
+            $da=array(
+                'book_id'=>$id,
+                'counting_number'=>'1'
+            );
+            return $this->db->insert('counter', $da, 'limit 1');
+        }
+    }
+//end model
+table column name
+id,	book_id, counting_number
+________________________________________________________
+//image uploading validation code
+$this->form_validation->set_rules('userfile1', '', 'callback_valid_image1');
+
+public function valid_image1($id = '') {
+        if ($id == '') {       
+            if ($_FILES['userfile1']['name'] == '') {
+            $this->form_validation->set_message('valid_image1', 'The Images Option 1 field is required.');
+            return false;
+            }
+        }else {
+            if ($this->input->post('userfile1') != '') {
+            return true;
+            }
+           }
+        }
+________________________________________________________
+// jquery text / images field value is empty.
+$('input.class').removeAttr('value');
+$('#inputID').removeAttr('value');
+
+//je gulo lage
+function reset(){
+    $('input[type=text]').val('');  
+    $('#textarea').val(''); 
+    $('input[type=select]').val('');
+    $('input[type=radio]').val('');
+    $('input[type=checkbox]').val('');  
+}
+//for  cheking value
+console.log($('#file_name'));
+________________________________________________________
+every md size 1048576
+for 3 mb =3*1048576
+for 4 mb =4*1048576
+for show mb then divided two bar 1024
+________________________________________________________
+Upload Images size
+<input type="file" name="preview_image_2" id="preview_image_2" title="select Preview image not more than 50mb" onchange="return ValidatePreview2FileUpload(this.value, this.files[0].size)">
+<script type="text/javascript">
+ function fileSizeCheck(value, size){
+        var re = /(\.jpg|\.jpeg|\.gif|\.png)$/i;
+        //var re = /(\.jpg|\.jpeg|\.gif|\.png|\.pdf|\.txt|\.xls|\.xlsx|\.doc|\.docx|\.zip)$/i;
+            if(!re.exec(value)){
+            alert('Sorry, "' + value + '" is invalid, allowed extensions are : jpg, jpeg, png, gif.');
+        }
+
+        if(re.exec(value)){
+            var fileSize = size / 1048576;
+            if(size >= 3145728){
+                alert('Sorry, "' + value + " (" + fileSize.toFixed(2) + " MB)" + '" is exceed the file upload size limit. Please make sure your file is not more than 3 MB.' );
+            }
+        }
+
+    };       
+</script> 
+________________________________________________________
+datepicker past / previou date hide
+ $('#datepicker').datepicker({minDate: 0,dateFormat: "dd/mm/yy"});
+________________________________________________________
+/*Redirect before page after submit pages*/
+        $tt = $_SERVER['PATH_INFO'];
+        $this->session->set_userdata('prev_url', $tt);
+        $this->session->userdata('prev_url');
+________________________________________________________        
+/*Encode and decode*/
+$input='bulbulz';
+echo $gt=strtr(base64_encode($input), '+/=', '-_a');
+echo '<br>';
+echo base64_decode(strtr($gt, '-_a', '+/='));
+________________________________________________________        
+/*if not open localhost/phpmyadmin after upgrate*/
+sudo ln -s /usr/share/phpmyadmin /var/www/
+________________________________________________________        
+/*Four item submenu */
+controller
+$data['menu']=$this->Product->top_and_sub_menu();
+
+model
+function top_and_sub_menu($parent_id=0) {      
+        return $this->db->query('select id,name,code from product_categories where product_id='.$parent_id.' order by id desc')->result();
+}   
+
+vidw page
+<select name="category" class="form-control">
+<?php
+
+foreach ($catogory as $m1) {
+/*____________first menu_____________*/
+echo "<option value='$m1->id'>" . $m1->name . "</option>";
+/*____________second menu_____________*/
+$sub_m2 = $this->Product->get_category_dropdown($m1->id);
+foreach ($sub_m2 as $m2) {
+	echo "<option value='$m2->id'>" . nbs(6) . '-' . $m2->name . "</option>";
+
+	/*____________three menu_____________*/
+	$sub_m3 = $this->Product->get_category_dropdown($m2->id);
+	foreach ($sub_m3 as $m3) {
+		echo "<option value='$m3->id'>" . nbs(12) . '-' . $m3->name . "</option>";
+	   
+		/*____________four menu_____________*/
+		$sub_m4 = $this->Product->get_category_dropdown($m3->id);
+		foreach ($sub_m4 as $m4) {
+			echo "<option value='$m4->id'>" . nbs(12) . '-' . $m4->name . "</option>";
+		}
+	}
+}
+}
+?>
+
+</select>     
+ 
+/*End Four item submenu */
+
+________________________________________________________        
+get post
+$this->input->get_post('some_data', TRUE);
+________________________________________________________        
+
+
+/*myql query if else condition*/ using by code geeft/ model(coustomer.php line256)
+function mod_brand_wise_product_list($table_column_name=null,$brand_id = null) {
+
+        $this->db->select("
+            id,name as product_name, brand as brand_id, code, (CASE WHEN status ='1' THEN 'active' ELSE 'inactive' END) as status,
+                ");
+        if (!empty($brand_id)) {                      
+            $this->db->where("($table_column_name =$brand_id)", NULL, FALSE);  
+        }        
+         $this->db->where("($table_column_name !='0')", NULL, FALSE);      
+        $this->db->order_by('id', 'DESC');
+        $department_info = $this->db->get('gift_items');
+        //echo $this->db->last_query();
+        return $department_info->result();
+    }
+    /*end myql query if else condition*/
+________________________________________________________        
+*********************Radio Button active inactive************************     
+----------------------------For add time----------------------
+<p>
+                            <label>
+                                <?php
+                                $set_status = set_value('status');
+                                if ($set_status != NULL) {
+                                    $checked_1 = ($set_status == '1') ? 'checked' : '';
+                                    $checked_2 = ($set_status == '0') ? 'checked' : '';
+                                } else {
+                                    $checked_1 = '';
+                                    $checked_2 = 'checked';
+                                }
+
+                                echo form_radio(array('name' => 'status', 'checked' => $checked_1, 'value' => '1',));
+                                ?>
+                                Active
+                            </label>
+                            <label>
+                                <?php echo form_radio(array('name' => 'status', 'checked' => $checked_2, 'value' => '0',)); ?>
+                                Inactive
+                            </label>
+                        </p>
+--------------------for edit time-----------------------
+<p class="text_box">
+                            <label>
+                                <?php
+                                $checked = '';
+                                $checked2 = '';
+                                if ($content->status == '1') {
+                                    $checked = "checked";
+                                }
+                                if ($content->status == '0') {
+                                    $checked2 = "checked";
+                                }
+                                ?>
+
+                                <?php
+                                echo form_radio(array('name' => 'status', 'checked' => $checked, 'value' => '1',));
+                                ?>
+                                Active </label>
+                            <label>
+                                <?php
+                                echo form_radio(array('name' => 'status', 'checked' => $checked2, 'value' => '0',));
+                                ?>
+                                Inactive </label>
+                        </p>                        
+*********************End radio button active inactive************************  
+________________________________________________________
